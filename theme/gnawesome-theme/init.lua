@@ -1,11 +1,11 @@
-local filesystem = require("gears.filesystem")
+local filesystem = require "gears.filesystem"
 local theme_dir = filesystem.get_configuration_dir() .. "/theme"
 
 local theme = {}
 
 theme.icons = theme_dir .. "/icons/"
-theme.font = "Rubik Regular 10"
-theme.font_bold = "Rubik Bold 10"
+theme.font = "Clear Sans Regular 10"
+theme.font_bold = "Clear Sans Bold 10"
 
 -- Colorscheme
 theme.system_black_dark = "#3D4C5F"
@@ -47,6 +47,6 @@ theme.awesome_icon = theme.icons .. "awesome.svg"
 local awesome_overrides = function(theme) end
 
 return {
-	theme = theme,
-	awesome_overrides = awesome_overrides,
+   theme = theme,
+   awesome_overrides = awesome_overrides,
 }
