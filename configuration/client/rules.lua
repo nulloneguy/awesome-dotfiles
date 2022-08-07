@@ -170,6 +170,7 @@ ruled.client.connect_signal("request::rules", function()
       rule_any = {
          class = {
             "TelegramDesktop",
+            "Kotatogram",
             "Thunderbird",
             "Discord",
             "teams",
@@ -213,6 +214,7 @@ ruled.client.connect_signal("request::rules", function()
             "vlc",
             "mpv",
             "Spotify",
+            "audacious",
          },
       },
       properties = {
@@ -291,6 +293,7 @@ ruled.client.connect_signal("request::rules", function()
             "Unity",
             "UnityHub",
             "jetbrains-studio",
+            "Code",
             "Ettercap",
             "scrcpy",
             "visual-studio-code",
