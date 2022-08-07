@@ -6,7 +6,7 @@ return {
 	-- The default applications that we will use in keybindings and widgets
 	default = {
 		-- Default terminal emulator
-		terminal = "kitty",
+		terminal = "st",
 		-- Default web browser
 		web_browser = "firefox",
 		-- Default text editor
@@ -24,7 +24,7 @@ return {
 		-- Default IDE
 		development = "neovide",
 		-- Default network manager
-		network_manager = "kitty -e nmtui",
+		network_manager = "st -e nmtui",
 		-- Default bluetooth manager
 		bluetooth_manager = "blueman-manager",
 		-- Default power manager
@@ -32,9 +32,9 @@ return {
 		-- Default GUI package manager
 		package_manager = "pamac-manager",
 		-- Default locker
-		lock = "awesome-client \"awesome.emit_signal('module::lockscreen_show')\"",
+		lock = "slock",
 		-- Default quake terminal
-		quake = "kitty --name QuakeTerminal",
+		quake = "st -n QuakeTerminal",
 		-- Default rofi global menu
 		rofi_global = "rofi -dpi "
 			.. screen.primary.dpi
@@ -47,7 +47,7 @@ return {
 		-- Default app menu
 		rofi_appmenu = "rofi -dpi "
 			.. screen.primary.dpi
-			.. " -show drun -scroll-method 0 -drun-match-fields all -no-lazy-grab -theme "
+			.. " -show drun -theme "
 			.. config_dir
 			.. "/configuration/rofi/appmenu/rofi.rasi",
 
@@ -65,7 +65,8 @@ return {
 		-- Load X colors
 		"xrdb $HOME/.Xresources",
 		-- Polkit and keyring
-		"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &" .. " eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)",
+		"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &"
+			.. " eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)",
 		-- Music server
 		"mpd",
 		-- Lockscreen timer
