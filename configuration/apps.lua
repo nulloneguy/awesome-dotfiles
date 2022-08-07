@@ -59,7 +59,7 @@ return {
 		-- keyboard layout
 		"setxkbmap -layout us,ru -option 'grp:alt_shift_toggle,grp_led:scroll'",
 		-- keyboard speed
-		"xset r rate 180 65",
+		"xset r rate 170 65",
 		-- Compositor
 		"picom -b --experimental-backends --config ~/.config/awesome/configuration/picom.conf",
 		-- Load X colors
