@@ -3,6 +3,13 @@ local wibox = require("wibox")
 local gears = require("gears")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
+local central_panel_switch = require("widget.central-panel-switch")
+local user_profile = require("widget.user-profile")
+local weather = require("widget.weather")
+local email = require("widget.email")
+local calendar = require("widget.calendar")
+local notification_center = require("widget.notif-center")
+local central_panel_settings = require("layout.central-panel.settings")
 
 local panel_visible = false
 
@@ -29,7 +36,7 @@ local central_panel = function(s)
 						layout = wibox.layout.align.horizontal,
 						expand = "none",
 						nil,
-						require("widget.central-panel-switch"),
+						central_panel_switch,
 						nil,
 					},
 					separator,
@@ -46,19 +53,19 @@ local central_panel = function(s)
 								{
 									layout = wibox.layout.fixed.vertical,
 									spacing = dpi(7),
-									require("widget.user-profile"),
-									require("widget.weather"),
-									require("widget.email"),
-									require("widget.calendar"),
+									user_profile,
+									weather,
+									email,
+									calendar,
 								},
-								require("widget.notif-center")(s),
+								notification_center(s),
 							},
 						},
 						{
 							id = "settings_id",
 							visible = false,
 							layout = wibox.layout.fixed.vertical,
-							require("layout.central-panel.settings")(),
+							central_panel_settings(),
 						},
 					},
 				},

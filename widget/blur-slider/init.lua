@@ -9,7 +9,7 @@ local clickable_container = require("widget.clickable-container")
 
 local action_name = wibox.widget({
 	text = "Blur Strength",
-	font = "Rubik Bold 10",
+	font = "Inter Bold 10",
 	align = "left",
 	widget = wibox.widget.textbox,
 })
@@ -100,7 +100,7 @@ end)))
 
 local adjust_blur = function(power)
 	awful.spawn.with_shell([[bash -c "
-		sed -i '/.*strength = .*/    strength = ]] .. power .. [[;' \
+    sed -i '/.*strength = .*/    strength = ]] .. power .. [[;' \
 		$HOME/.config/awesome/configuration/picom.conf
 		"]])
 end

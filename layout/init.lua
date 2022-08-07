@@ -1,14 +1,17 @@
-local awful = require("awful")
-local top_panel = require("layout.top-panel")
-local bottom_panel = require("layout.bottom-panel")
-local central_panel = require("layout.central-panel")
+local awful = require('awful')
+local top_panel = require('layout.top-panel')
+local bottom_panel = require('layout.bottom-panel')
+local central_panel =  require('layout.central-panel')
 
 -- Create a wibox panel for each screen and add it
-screen.connect_signal("request::desktop_decoration", function(s)
-	s.top_panel = top_panel(s)
-	s.bottom_panel = bottom_panel(s)
-	s.central_panel = central_panel(s)
-end)
+screen.connect_signal(
+	'request::desktop_decoration',
+	function(s)
+		s.top_panel = top_panel(s)
+		s.bottom_panel = bottom_panel(s)
+		s.central_panel = central_panel(s)
+	end
+)
 
 -- Hide bars when app go fullscreen
 function update_bars_visibility()
@@ -31,20 +34,29 @@ function update_bars_visibility()
 	end
 end
 
-tag.connect_signal("property::selected", function(t)
-	update_bars_visibility()
-end)
-
-client.connect_signal("property::fullscreen", function(c)
-	if c.first_tag then
-		c.first_tag.fullscreen_mode = c.fullscreen
-	end
-	update_bars_visibility()
-end)
-
-client.connect_signal("unmanage", function(c)
-	if c.fullscreen then
-		c.screen.selected_tag.fullscreen_mode = false
+tag.connect_signal(
+	'property::selected',
+	function(t)
 		update_bars_visibility()
 	end
-end)
+)
+
+client.connect_signal(
+	'property::fullscreen',
+	function(c)
+		if c.first_tag then
+			c.first_tag.fullscreen_mode = c.fullscreen
+		end
+		update_bars_visibility()
+	end
+)
+
+client.connect_signal(
+	'unmanage',
+	function(c)
+		if c.fullscreen then
+			c.screen.selected_tag.fullscreen_mode = false
+			update_bars_visibility()
+		end
+	end
+)

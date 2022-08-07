@@ -10,44 +10,9 @@ local clickable_container = require "widget.clickable-container"
 local config_dir = filesystem.get_configuration_dir()
 local widget_icon_dir = config_dir .. "configuration/user-profile/"
 
-local msg_table = {
-   "See you later, alligator!",
-   "After a while, crocodile.",
-   "Stay out of trouble.",
-   "I’m out of here.",
-   "Yamete, onii-chan~. UwU",
-   "Okay...bye, fry guy!",
-   "Peace out!",
-   "Peace out, bitch!",
-   "Gotta get going.",
-   "Out to the door, dinosaur.",
-   "Don't forget to come back!",
-   "Smell ya later!",
-   "In a while, crocodile.",
-   "Adios, amigo.",
-   "Begone!",
-   "Arrivederci.",
-   "Never look back!",
-   "So long, sucker!",
-   "Au revoir!",
-   "Later, skater!",
-   "That'll do pig. That'll do.",
-   "Happy trails!",
-   "Smell ya later!",
-   "See you soon, baboon!",
-   "Bye Felicia!",
-   "Sayonara!",
-   "Ciao!",
-   "Well.... bye.",
-   "Delete your browser history!",
-   "See you, Space Cowboy!",
-   "Change da world. My final message. Goodbye.",
-   "Choose wisely!",
-}
-
 local greeter_message = wibox.widget {
    markup = "Choose wisely!",
-   font = "Inter UltraLight 40",
+   font = "Clear Sans UltraLight 38",
    align = "center",
    valign = "center",
    widget = wibox.widget.textbox,
@@ -55,7 +20,7 @@ local greeter_message = wibox.widget {
 
 local profile_name = wibox.widget {
    markup = "user@hostname",
-   font = "Inter Bold 12",
+   font = "Clear Sans Bold 14",
    align = "center",
    valign = "center",
    widget = wibox.widget.textbox,
@@ -64,7 +29,7 @@ local profile_name = wibox.widget {
 local profile_imagebox = wibox.widget {
    image = widget_icon_dir .. "default.svg",
    resize = true,
-   forced_height = dpi(220),
+   forced_height = dpi(140),
    clip_shape = gears.shape.circle,
    widget = wibox.widget.imagebox,
 }
@@ -107,7 +72,7 @@ end
 update_user_name()
 
 local update_greeter_msg = function()
-   greeter_message:set_markup(msg_table[math.random(#msg_table)])
+   greeter_message:set_markup "See you later space cowboy"
    greeter_message:emit_signal "widget::redraw_needed"
 end
 
@@ -116,7 +81,7 @@ update_greeter_msg()
 local build_power_button = function(name, icon, callback)
    local power_button_label = wibox.widget {
       text = name,
-      font = "Inter Regular 10",
+      font = "Clear Sans Regular 12",
       align = "center",
       valign = "center",
       widget = wibox.widget.textbox,
@@ -137,8 +102,8 @@ local build_power_button = function(name, icon, callback)
             widget = wibox.container.background,
          },
          shape = gears.shape.rounded_rect,
-         forced_width = dpi(150),
-         forced_height = dpi(150),
+         forced_width = dpi(90),
+         forced_height = dpi(90),
          widget = clickable_container,
       },
       left = dpi(24),
@@ -187,7 +152,7 @@ local poweroff = build_power_button("Shutdown", icons.power, poweroff_command)
 local reboot = build_power_button("Restart", icons.restart, reboot_command)
 local suspend = build_power_button("Sleep", icons.sleep, suspend_command)
 local logout = build_power_button("Logout", icons.logout, logout_command)
---local lock = build_power_button("Lock", icons.lock, lock_command)
+local lock = build_power_button("Lock", icons.lock, lock_command)
 
 local create_exit_screen = function(s)
    s.exit_screen = wibox {

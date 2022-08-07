@@ -26,7 +26,7 @@ local notif_center = function(s)
 			nil,
 			{
 				layout = wibox.layout.fixed.horizontal,
-				spacing = dpi(9),
+				spacing = dpi(5),
 				s.dont_disturb,
 				s.clear_all
 			},
