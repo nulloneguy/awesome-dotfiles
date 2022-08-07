@@ -135,7 +135,7 @@ ruled.client.connect_signal("request::rules", function()
             "alacritty",
             "K3rmit",
             "xfce4-terminal",
-            "st",
+            "St",
          },
       },
       properties = {
