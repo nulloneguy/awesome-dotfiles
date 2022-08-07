@@ -1,5 +1,5 @@
 configuration {
-	font: "Inter Regular 10";
+	font: "Clear Sans Regular 11";
 	show-icons: true;
 	drun-display-format: "{name}";
 	threads: 0;
